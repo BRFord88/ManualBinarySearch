@@ -77,7 +77,7 @@ class Searcher implements ActionListener{
         Border lineBorder = BorderFactory.createLineBorder(Color.black);
         Border paddedLineBorder = BorderFactory.createCompoundBorder(lineBorder
                 , paddedBorder);
-        Border linePadLineBorder = BorderFactory.createCompoundBorder(paddedBorder
+        Border padLinePadBorder = BorderFactory.createCompoundBorder(paddedBorder
                 , paddedLineBorder);
         
         // configure panels
@@ -91,7 +91,7 @@ class Searcher implements ActionListener{
         midPanel.setLayout(new GridLayout(1, 2, 25, 20));
         midPanel.add(recommendedTryLbl);
         midPanel.add(recommendedTryTxt);
-        midPanel.setBorder(linePadLineBorder);
+        midPanel.setBorder(padLinePadBorder);
         
         bottomPanel.setLayout(new GridLayout(1, 3, 20, 20));
         bottomPanel.add(higherBtn);
