@@ -61,8 +61,10 @@ class Searcher implements ActionListener{
         // text fields
         lowValueTxt = new JTextField(3);
         lowValueTxt.setHorizontalAlignment(JTextField.CENTER);
+        lowValueTxt.addActionListener(this);
         highValueTxt = new JTextField(3);
         highValueTxt.setHorizontalAlignment(JTextField.CENTER);
+        highValueTxt.addActionListener(this);
         recommendedTryTxt = new JTextField(3);
         recommendedTryTxt.setEditable(false);
         recommendedTryTxt.setHorizontalAlignment(JTextField.CENTER);
@@ -128,6 +130,12 @@ class Searcher implements ActionListener{
         recommendedTry = ((highValue - lowValue) / 2) + lowValue;
     } // end higher
     
+    private void recalcRecommendedTry() {
+        highValue = Integer.parseInt(highValueTxt.getText());
+        lowValue = Integer.parseInt(lowValueTxt.getText());
+        recommendedTry = ((highValue - lowValue) / 2) + lowValue;
+    } // end recalcRecommendedTry
+    
     private void reset() {
         lowValue = 10;
         highValue = 99;
@@ -142,7 +150,14 @@ class Searcher implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand().toString()) {
+        
+        // perform action on text field update
+        if (e.getSource() == lowValueTxt || e.getSource() == highValueTxt) {
+            recalcRecommendedTry();
+        } // end if/elseif
+
+        // perform action based on button press
+        switch (e.getActionCommand()) {
             case("Lower"): {
                 lower();
                 break;
