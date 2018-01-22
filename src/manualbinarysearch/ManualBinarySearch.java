@@ -115,17 +115,13 @@ class Searcher implements ActionListener{
     } // end constructor
 
     private void lower() {
-        highValue = Integer.parseInt(highValueTxt.getText());
-        lowValue = Integer.parseInt(lowValueTxt.getText());
-        recommendedTry = ((highValue - lowValue) / 2) + lowValue;
+        recalcRecommendedTry();
         highValue = recommendedTry;
         recommendedTry = highValue - ((highValue - lowValue) / 2);
     } // end lower
     
     private void higher() {
-        highValue = Integer.parseInt(highValueTxt.getText());
-        lowValue = Integer.parseInt(lowValueTxt.getText());
-        recommendedTry = ((highValue - lowValue) / 2) + lowValue;
+        recalcRecommendedTry();
         lowValue = recommendedTry;
         recommendedTry = ((highValue - lowValue) / 2) + lowValue;
     } // end higher
